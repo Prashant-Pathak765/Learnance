@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="student.css" />
+</head>
+<body>
+  <header>
+    <h1>🎓 Student Dashboard</h1>
+  </header>
+
+  <div class="container">
+    <h2>Welcome, Student!</h2>
+
+    <div class="dashboard-card">
+      <h3>📚 Dashboard Overview</h3>
+      <p>Get a quick summary of your performance, attendance, and updates from teachers.</p>
+      <button onclick="showSection('dashboard')">Open Dashboard</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>📅 Attendance</h3>
+      <p>Check your daily attendance record and see your attendance percentage.</p>
+      <button onclick="showSection('attendance')">View Attendance</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>📈 Exam Results</h3>
+      <p>View your subject-wise marks and track your academic progress.</p>
+      <button onclick="showSection('results')">View Results</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>📄 Previous Year Papers</h3>
+      <p>Access and download past question papers to prepare effectively for exams.</p>
+      <button onclick="showSection('papers')">Open Papers</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>💻 Projects</h3>
+      <p>View ongoing and completed projects and manage your submissions.</p>
+      <button onclick="showSection('projects')">View Projects</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>🎥 Live Class</h3>
+      <p>Join your scheduled online live class session with your teacher.</p>
+      <button class="join-btn" onclick="window.location.href='camera.html?role=student'">Join Class</button>
+    </div>
+  </div>
+
+  <!-- Hidden Sections (Optional for data display) -->
+  <section id="attendance" class="dashboard hidden">
+    <h2>📅 Attendance Record</h2>
+    <div class="card">
+      <table>
+        <tr><th>Date</th><th>Status</th></tr>
+        <tr><td>01-Nov-2025</td><td>✅ Present</td></tr>
+        <tr><td>31-Oct-2025</td><td>❌ Absent</td></tr>
+        <tr><td>30-Oct-2025</td><td>✅ Present</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section id="results" class="dashboard hidden">
+    <h2>📈 Exam Results</h2>
+    <div class="card">
+      <ul>
+        <li>Mathematics — <strong>88%</strong></li>
+        <li>Science — <strong>92%</strong></li>
+        <li>English — <strong>81%</strong></li>
+        <li>Computer — <strong>95%</strong></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="papers" class="dashboard hidden">
+    <h2>📄 Previous Year Papers</h2>
+    <div class="card">
+      <ul>
+        <li><a href="#">Maths 2024 Paper (PDF)</a></li>
+        <li><a href="#">Science 2024 Paper (PDF)</a></li>
+        <li><a href="#">Computer 2023 Paper (PDF)</a></li>
+        <li><a href="#">English 2023 Paper (PDF)</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects" class="dashboard hidden">
+    <h2>💻 Student Projects</h2>
+    <div class="card">
+      <ul>
+        <li>AI Chatbot — Ongoing</li>
+        <li>Science Fair Model — Completed</li>
+        <li>Web Portfolio — In Progress</li>
+      </ul>
+    </div>
+  </section>
+  
+  <button id="logoutBtn">Logout</button>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll(".dashboard").forEach(sec => sec.classList.add("hidden"));
+      document.getElementById(id).classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // ✅ FIXED ROLE CHECK
+    const role = (localStorage.getItem("userRole") || "").toLowerCase();
+    const name = localStorage.getItem("userName") || "Student";
+
+    if (role !== "student") {
+      alert("Access denied. Please log in as a student.");
+      window.location.href = "login.html";
+    } else {
+      document.querySelector("h2").textContent = `Welcome, ${name}!`;
+
+    }
+
+    // ✅ Logout
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.clear();
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>

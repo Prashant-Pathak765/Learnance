@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login | Student & Teacher Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <main class="page" role="main" aria-labelledby="app-title">
+    <section class="auth-card" aria-label="Login form">
+      <div class="brand">
+        <div class="logo">🎓</div>
+        <h1 id="app-title">Role-based Login</h1>
+        <p class="subtitle">Access the dashboard for Students or Teachers.</p>
+      </div>
+
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="role">Select Role</label>
+          <select id="role" name="role" required>
+            <option value="">-- Choose Role --</option>
+            <option value="student">Student</option>
+            <option value="teacher">Teacher</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" inputmode="email" autocomplete="email" />
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="password-wrapper">
+            <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required minlength="8" aria-describedby="pwdError" />
+            <button type="button" class="icon-btn" id="togglePassword" aria-label="Show password">
+              <span class="eye" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div id="pwdError" class="error" role="alert" aria-live="polite"></div>
+        </div>
+
+        <div class="options">
+          <label class="checkbox">
+            <input type="checkbox" id="rememberMe" />
+            <span>Remember me</span>
+          </label>
+          <a href="#" class="link muted" id="forgotLink">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn primary" id="signInBtn">Sign in</button>
+
+        <div class="form-footnote">By signing in, you'll be redirected to your respective dashboard.</div>
+      </form>
+    </section>
+
+    <section class="side-panel">
+      <div class="illustration">
+        <img src="photos/login.png" alt="Dashboard illustration" style="width:100%; border-radius:20px; opacity:0.9;" />
+        <p class="side-copy">
+          Online Teaching portal for Mentor and Learner.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script src="login.js"></script>
+</body>
+</html>

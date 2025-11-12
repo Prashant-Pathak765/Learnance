@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teacher Dashboard</title>
+  <link rel="stylesheet" href="teacher.css" />
+</head>
+<body>
+  <header>
+    <h1>Teacher Dashboard</h1>
+    <a href="#">Logout</a>
+  </header>
+
+  <div class="container">
+    <h2>Welcome, Teacher!</h2>
+
+    <!-- Dashboard Cards -->
+    <div class="dashboard-card">
+      <h3>📚 Manage Classes</h3>
+      <p>Create, update, and manage your class details.</p>
+      <button>View Classes</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>📝 Assignments</h3>
+      <p>Upload and review assignments submitted by students.</p>
+      <button>Manage Assignments</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>🎯 Student Attendance</h3>
+      <p>Mark and view daily attendance of your students.</p>
+      <button>View Attendance</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>🕓 Class Schedule</h3>
+      <p>View upcoming lectures and class timings.</p>
+      <button>View Schedule</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>💬 Messages</h3>
+      <p>Communicate directly with students for queries or feedback.</p>
+      <button>Open Messages</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>📊 Performance Reports</h3>
+      <p>Analyze class performance and generate reports.</p>
+      <button>View Reports</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>🎥 Live Class</h3>
+      <p>Start your one-on-one online class session with a student.</p>
+      <button id="startClassBtn" onclick="window.location.href='camera.html?role=teacher'">Start Class</button>
+    </div>
+
+    <button id="logoutBtn">Logout</button>
+  </div>
+
+  <script>
+    // ✅ Read user info saved in localStorage by login.js
+    const role = localStorage.getItem("userRole");
+    const name = localStorage.getItem("userName");
+
+    if (role !== "teacher") {
+      alert("Access denied. Please log in as a teacher.");
+      window.location.href = "login.html";
+    } else {
+      document.querySelector("h2").textContent = `Welcome, ${name || "Teacher"}!`;
+    }
+
+   
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.clear();
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f6f8;
+}
+
+header {
+  background: #333;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+}
+
+.container {
+  padding: 25px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.dashboard-card {
+  background: white;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 10px;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-3px);
+}
+
+.dashboard-card h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.dashboard-card p {
+  color: #666;
+  margin: 10px 0;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  background: #4CAF50;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+button:hover {
+  background: #45a049;
+}
+
+.join-btn {
+  background: #0078d7;
+}
+
+.join-btn:hover {
+  background: #005fa3;
+}
+
+.dashboard {
+  display: block;
+  padding: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+h2 {
+  color: #333;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background: #f0f0f0;
+  text-align: left;
+}
+
+a {
+  color: #0078d7;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Live Class</title>
+  <link rel="stylesheet" href="camera.css" />
+
+  <!-- ✅ Load socket.io from backend (must come before webrtc.js) -->
+  <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+
+  <!-- ✅ Load WebRTC logic -->
+  <script src="webrtc.js" defer></script>
+</head>
+<body>
+  <header>
+    <button id="backBtn">⬅ Back</button>
+    <span id="title">Live Class</span>
+  </header>
+
+  <div class="video-container">
+    <div class="video-wrapper">
+      <video id="localVideo" autoplay muted playsinline></video>
+      <div class="label" id="localLabel">You</div>
+    </div>
+    <div class="video-wrapper">
+      <video id="remoteVideo" autoplay playsinline></video>
+      <div class="label" id="remoteLabel">Other</div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button id="teacherBtn">Start as Teacher</button>
+    <button id="studentBtn">Start as Student</button>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const role = urlParams.get('role');
+    const backBtn = document.getElementById('backBtn');
+    const teacherBtn = document.getElementById('teacherBtn');
+    const studentBtn = document.getElementById('studentBtn');
+
+    if (role === 'teacher') {
+      backBtn.onclick = () => window.location.href = 'teacher.html';
+      document.getElementById('localLabel').textContent = 'Teacher';
+      document.getElementById('remoteLabel').textContent = 'Student';
+    } else if (role === 'student') {
+      backBtn.onclick = () => window.location.href = 'student.html';
+      document.getElementById('localLabel').textContent = 'Student';
+      document.getElementById('remoteLabel').textContent = 'Teacher';
+    } else {
+      backBtn.onclick = () => window.location.href = 'teacher.html';
+    }
+
+    // ✅ Attach event listeners AFTER window.load to ensure webrtc.js is ready
+    window.addEventListener("load", () => {
+      teacherBtn.onclick = () => startCamera('teacher');
+      studentBtn.onclick = () => startCamera('student');
+    });
+  </script>
+</body>
+</html>
